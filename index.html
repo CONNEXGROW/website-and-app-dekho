@@ -260,53 +260,42 @@
       </div>
     </footer>
   </div>
-  <script>function downloadBrochure() {
-    // Replace with the actual URL of your brochure file
-    const brochureUrl = "https://yourserver.com/brochure.pdf";
-  
-    const downloadLink = document.createElement("a");
-    downloadLink.href = brochureUrl;
-    downloadLink.download = "Brochure.pdf";
-    downloadLink.click();
-  
-    // Add a visual feedback for the download
-    const downloadBtn = document.querySelector('.download-btn');
-    downloadBtn.textContent = 'Downloading...';
-    setTimeout(() => {
-      downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+  <script>
+    function downloadBrochure() {
+      const brochureUrl = "https://firebasestorage.googleapis.com/v0/b/connexwebinar.appspot.com/o/1_20241205_011310_0000.pdf?alt=media&token=0e9485a5-1f3d-4e66-99c1-7c5c8231d71c";
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = brochureUrl;
+      downloadLink.download = "Connexgrow_Brochure.pdf";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      // Add a visual feedback for the download
+      const downloadBtn = document.querySelector('.download-btn');
+      downloadBtn.textContent = 'Downloading...';
       setTimeout(() => {
-        downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Brochure';
-      }, 3000);
-    }, 1500);
-  }
-  
-  function openWebsite(url) {
-    window.open(url, '_blank');
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+        downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+        setTimeout(() => {
+          downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Brochure';
+        }, 3000);
+      }, 1500);
+    }
+
+    function openWebsite(url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+      portfolioItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const url = item.getAttribute('onclick').match(/'([^']+)'/)[1];
+          openWebsite(url);
         });
       });
     });
-  
-    // Add hover effect to portfolio items
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        item.style.transform = 'scale(1.05)';
-      });
-      item.addEventListener('mouseleave', () => {
-        item.style.transform = 'scale(1)';
-      });
-    });
-  });
-  
   </script>
 </body>
 </html>
