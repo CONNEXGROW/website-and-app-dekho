@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    :root {
+      --primary-color: #6c5ce7;
+      --secondary-color: #a29bfe;
+      --background-color: #ffffff;
+      --text-color: #2d3436;
+      --overlay-color: rgba(108, 92, 231, 0.9);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 10px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 1s ease-out;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .brochure, .portfolio {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .download-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .download-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .portfolio-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .portfolio-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--overlay-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .portfolio-item:hover .overlay {
+      opacity: 1;
+    }
+    
+    .text {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .social-icons {
+      margin-top: 1rem;
+    }
+    
+    .social-icon {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      color: var(--secondary-color);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+    
+      h1 {
+        font-size: 2rem;
+      }
+    
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    </style>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome to My Elegant Portfolio</h1>
+      <p>Discover the art of web design and development</p>
+    </header>
+    <main>
+      <section class="brochure">
+        <h2>Download My Brochure</h2>
+        <p>Get a comprehensive overview of my work and skills.</p>
+        <button onclick="downloadBrochure()" class="download-btn">
+          <i class="fas fa-download"></i> Download Brochure
+        </button>
+      </section>
+      <section class="portfolio">
+        <h2>Portfolio Highlights</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" onclick="openWebsite('https://example.com/project1')">
+            <img src="2_20241204_230345_0001.png" alt="Project 1" class="portfolio-image">
+            <div class="overlay">
+              <div class="text">Project 1</div>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openWebsite('https://example.com/project2')">
+            <img src="3_20241204_230345_0002.png" alt="Project 2" class="portfolio-image">
+            <div class="overlay">
+              <div class="text">Project 2</div>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openWebsite('https://example.com/project3')">
+            <img src="4_20241204_230345_0003.png" alt="Project 3" class="portfolio-image">
+            <div class="overlay">
+              <div class="text">Project 3</div>
+            </div>
+          </div>
+          <div class="portfolio-item" onclick="openWebsite('https://example.com/project4')">
+            <img src="5_20241204_230345_0004.png" alt="Project 4" class="portfolio-image">
+            <div class="overlay">
+              <div class="text">Project 4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Your Name. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+      </div>
+    </footer>
+  </div>
+  <script>function downloadBrochure() {
+    // Replace with the actual URL of your brochure file
+    const brochureUrl = "https://yourserver.com/brochure.pdf";
+  
+    const downloadLink = document.createElement("a");
+    downloadLink.href = brochureUrl;
+    downloadLink.download = "Brochure.pdf";
+    downloadLink.click();
+  
+    // Add a visual feedback for the download
+    const downloadBtn = document.querySelector('.download-btn');
+    downloadBtn.textContent = 'Downloading...';
+    setTimeout(() => {
+      downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+      setTimeout(() => {
+        downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Brochure';
+      }, 3000);
+    }, 1500);
+  }
+  
+  function openWebsite(url) {
+    window.open(url, '_blank');
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  
+    // Add hover effect to portfolio items
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    portfolioItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.style.transform = 'scale(1.05)';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.transform = 'scale(1)';
+      });
+    });
+  });
+  
+  </script>
+</body>
+</html>
+
